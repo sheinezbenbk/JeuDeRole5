@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modification d'Accessoire</title>
+</head>
+<body>
+<main class="container">
+    <div class="row col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
+
+        <form novalidate class="validation"  th:action="@{/admin/accessoire/update}" th:object="${accessoire}" method="post">
+            <h2 class="mb-4">Modification de l'accessoire</h2>
+            <!-- Input pour l'id de l'accessoire'-->
+            <input readonly required type="hidden" name="id" th:field="${accessoire.id}">
+            <!-- Input pour le nom de l'accessoire  -->
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom de l'acessoire</label>
+                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${accessoire.nom}">
+            </div>
+
+            <!-- Input pour le description de l'accessoire -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description de l'accessoire</label>
+                <input required type="text" class="form-control" id="description" name="description"  th:field="${accessoire.description}">
+            </div>
+
+            <!-- Input pour le Chemin Image de l'accessoire -->
+            <div class="mb-3">
+                <label for="cheminImage" class="form-label">Chemin d'image de l'accessoire</label>
+                <input required type="text" class="form-control" id="cheminImage" name="cheminImage"  th:field="${accessoire.cheminImage}">
+            </div>
+
+            <!-- Input pour la Qualite de l'accessoire -->
+            <div class="mb-3">
+                <label for="qualite" class="form-label">Qualite de l'accessoire</label>
+                <input required type="text" class="form-control" id="qualite" name="qualite"  th:field="${accessoire.qualite}">
+            </div>
+
+            <!-- Input pour la type d'accessoire de l'accessoire -->
+            <div class="mb-3">
+                <label for="typeAccessoire" class="form-label">Type d'accessoire de l'accessoire</label>
+                <input required type="text" class="form-control" id="typeAccessoire" name="typeAccessoire"  th:field="${accessoire.typeAccessoire}">
+            </div>
+
+
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary">Modifier</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Type Armure</title>*
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+<main class="container">
+    <div class="row col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
+
+        <form  th:action="@{/admin/typearmure}" th:object="${nouveautypearmure}" method="post">
+            <h2 class="mb-4">Ajouter un type armure</h2>
+            <!-- Input pour le nom du type armure -->
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom du type armure</label>
+                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${nouveautypearmure.nom}">
+            </div>
+
+
+            <!-- Input pour le bonus type du type armure -->
+            <div class="mb-3">
+                <label for="bonusType" class="form-label">Bonus type armure</label>
+                <input required min="0" max="99" type="number" class="form-control" id="bonusType" name="bonusType" th:field="${nouveautypearmure.bonusType}">
+            </div>
+
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+    </div>
+</main>
+<footer th:replace="mesFragments :: fragFooter"></footer>
+<script src="/js/validation.js"></script>
+</body>
+</html>

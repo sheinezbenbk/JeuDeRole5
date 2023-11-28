@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head th:replace="mesFragments :: fragHead">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="vh-100">
+    <nav th:replace="mesFragments :: fragNav"></nav>
+    <div th:replace="mesFragments ::fragFlashSuccess"></div>
+    <main class="container">
+        <h1>Gestion des types d'Accessoires</h1>
+        <div >
+            <a th:href="@{'/admin/typeaccessoire/create'}" class="btn btn-success">
+                Ajouter un type d'accessoire
+            </a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Type Bonus</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="untypeaccessoire : ${typeaccessoire}">
+                <td th:text="${untypeaccessoire.nom}"></td>
+                <td th:text="${untypeaccessoire.typebonus}"></td>
+                <td class="d-flex">
+                    <a th:href="@{'/admin/typeaccessoire/'+${untypeaccessoire.id}+'/edit'}" class="btn btn-warning">
+                        Modifier
+                    </a>
+                    <a th:href="@{'/admin/typeaccessoire/'+${untypeaccessoire.id}}" class="btn btn-primary">
+                        Consulter
+                    </a>
+                    <div>
+                        <form th:action="@{'/admin/typeaccessoire/delete'}" method="post">
+                            <input type="hidden" name="id" th:value="${untypeaccessoire.id}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</div>
+<footer th:replace="mesFragments :: fragFooter"></footer>
+<script src="/js/validation.js"></script>
+</body>
+</html>

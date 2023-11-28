@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head th:replace="mesFragments :: fragHead">
+  <meta charset="UTF-8">
+  <title>armure</title>
+</head>
+<body>
+<div class="vh-100">
+  <nav th:replace="mesFragments :: fragNav"></nav>
+  <main class="container">
+    <h1>Gestion des armure</h1>
+
+      <a th:href="@{'/admin/armure/create'}" class="btn btn-success">
+        Ajouter une Armure
+      </a>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Description </th>
+        <th>Chemin de l'image </th>
+        <th>Qualité </th>
+        <th>Type d'armure /th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="armure : ${Armures}">
+        <td th:text="${armure.nom}"></td>
+        <td th:text="${armure.description}"></td>
+        <td th:text="${armure.cheminImage}"></td>
+        <td th:text="${armure.qualite}"></td>
+        <td th:text="${armure.typeArmure}"></td>
+        <td class="d-flex">
+          <a th:href="@{'/admin/armure/'+${armure.id}+'/edit'}" class="btn btn-warning">
+            Modifier
+          </a>
+          <a th:href="@{'/admin/armure/'+${armure.id}}" class="btn btn-primary">
+            Consulter
+          </a>
+          <div>
+            <form th:action="@{'/admin/armure /delete'}" method="post">
+              <input type="hidden" name="id" th:value="${armure.id}">
+              <button class="btn btn-danger">Supprimer</button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
+</div>
+<footer th:replace="mesFragments :: fragFooter"></footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Type Armure</title>
+</head>
+<body>
+<main class="container">
+    <div class="row col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
+
+        <form novalidate class="validation"  th:action="@{/admin/armure/update}" th:object="${Armure}" method="post">
+            <h2 class="mb-4">Modification d'un type armure</h2>
+            <!-- Input pour l'id du type armure -->
+            <input readonly required type="hidden" name="id" th:field="${Armure.id}">
+            <!-- Input pour le nom du type armure -->
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom du type armure</label>
+                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${Armure.nom}">
+            </div>
+
+            <!-- Input pour la description de l'Armure -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input required type="number" class="form-control" id="description" name="description"  th:field="${Armure.description}">
+            </div>
+
+            <!-- Input pour le chemin de l'image l'Armure -->
+            <div class="mb-3">
+                <label for="cheminImage" class="form-label">Description</label>
+                <input required type="number" class="form-control" id="cheminImage" name="cheminImage"  th:field="${Armure.cheminImage}">
+            </div>
+
+            <!-- Input pour la Qualité de l'Armure -->
+            <div class="mb-3">
+                <label for="qualite" class="form-label">Qualité de l'Armure</label>
+                <input required type="number" class="form-control" id="qualite" name="qualite"  th:field="${Armure.qualite}">
+            </div>
+
+            <!-- Input pour le type d'armure de l'Armure -->
+            <div class="mb-3">
+                <label for="typeArmure" class="form-label">Type Armure de l'Armure</label>
+                <input required type="number" class="form-control" id="typeArmure" name="typeArmure"  th:field="${Armure.typeArmure}">
+            </div>
+
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary">Modifier</button>
+        </form>
+    </div>
+</main>
+<script src="/js/validation.js"></script>
+</body>
+</html>

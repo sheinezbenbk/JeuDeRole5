@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Type Armure</title>
+</head>
+<body>
+<main class="container">
+    <div class="row col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
+
+        <form novalidate class="validation"  th:action="@{/admin/typearmure/update}" th:object="${typearmure}" method="post">
+            <h2 class="mb-4">Modification d'un type armure</h2>
+            <!-- Input pour l'id du type armure -->
+            <input readonly required type="hidden" name="id" th:field="${typearmure.id}">
+            <!-- Input pour le nom du type armure -->
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom du type armure</label>
+                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${typearmure.nom}">
+            </div>
+
+            <!-- Input pour le bonus du type armure -->
+            <div class="mb-3">
+                <label for="bonusType" class="form-label">Bonus type du type armure</label>
+                <input required min="0" max="99" type="number" class="form-control" id="bonusType" name="bonusType" th:field="${typearmure.bonusType}">
+            </div>
+
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary">Modifier</button>
+        </form>
+    </div>
+</main>
+<script src="/js/validation.js"></script>
+</body>
+</html>

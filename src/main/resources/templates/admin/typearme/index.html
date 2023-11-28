@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head th:replace="mesFragments :: fragHead">
+    <meta charset="UTF-8">
+    <title>Typ arme</title>
+</head>
+<body>
+<div class="vh-100">
+    <nav th:replace="mesFragments :: fragNav"></nav>
+    <main class="container">
+        <h1>Gestion des TypesArmes</h1>
+        <div >
+            <a th:href="@{'/admin/typearme/create'}" class="btn btn-success">
+                Ajouter un TypeArme
+            </a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Nombre de Dé</th>
+                <th>Valeur Dé Max </th>
+                <th>multiplicateur Critique</th>
+                <th>activation Critique</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="typearme : ${typearmes}">
+                <td th:text="${typearme.nom}"></td>
+                <td th:text="${typearme.nombreDes}"></td>
+                <td th:text="${typearme.valeurDeMax}"></td>
+                <td th:text="${typearme.multiplicateurCritique}"></td>
+                <td th:text="${typearme.activationCritique}"></td>
+                <td class="d-flex">
+                    <a th:href="@{'/admin/typearme/'+${typearme.id}+'/edit'}" class="btn btn-warning">
+                        Modifier
+                    </a>
+                    <a th:href="@{'/admin/typearme/'+${typearme.id}}" class="btn btn-primary">
+                        Consulter
+                    </a>
+                    <div>
+                        <form th:action="@{'/admin/typearme/delete'}" method="post">
+                            <input type="hidden" name="id" th:value="${typearme.id}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</div>
+<footer th:replace="mesFragments :: fragFooter"></footer>
+<script src="/js/validation.js"></script>
+</body>
+</html>

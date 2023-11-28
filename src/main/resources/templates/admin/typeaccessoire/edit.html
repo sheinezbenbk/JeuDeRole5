@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<main class="container">
+    <div class="row col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
+
+        <form novalidate class="validation"  th:action="@{/admin/typeaccessoire/update}" th:object="${typeaccessoire}" method="post">
+            <h2 class="mb-4">Modification d'une Qualité</h2>
+            <!-- Input pour l'id de la qualité -->
+            <input readonly required type="hidden" name="id" th:field="${typeaccessoire.id}">
+            <!-- Input pour le nom du type d'accessoire  -->
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom de la Qualité</label>
+                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${typeaccessoire.nom}">
+            </div>
+
+            <!-- Input pour le type bonus du type d'accessoire -->
+            <div class="mb-3">
+                <label for="typebonus" class="form-label">Type bonus de la Qualité</label>
+                <input required type="text" class="form-control" id="typebonus" name="typebonus"  th:field="${typeaccessoire.typebonus}">
+            </div>
+
+
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary">Modifier</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

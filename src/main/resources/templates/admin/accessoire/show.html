@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head th:replace="mesFragments :: fragHead">
+    <meta charset="UTF-8">
+    <title>Accessoire information</title>
+</head>
+<body>
+<div class="vh-100">
+    <nav th:replace="mesFragments :: fragNav"></nav>
+    <main class="container">
+        <h1  th:text="'Nom: '+${accessoire.nom}"></h1>
+        <ul>
+            <li th:text="'Nom : '+ ${accessoire.nom}"></li>
+            <li th:text="'Description : '+${accessoire.description}"></li>
+            <li th:text="'CheminImage : '+${accessoire.cheminImage}"></li>
+            <li th:text="'Qualité : '+${accessoire.qualite}"></li>
+            <li th:text="'Type accessoire : '+${accessoire.typeAccessoire}"></li>
+        </ul>
+    </main>
+</div>
+<footer th:replace="mesFragments :: fragFooter"></footer>
+</body>
+</html>

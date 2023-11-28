@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head th:replace="mesFragments :: fragHead">
+  <meta charset="UTF-8">
+  <title>Type Armure</title>
+</head>
+<body>
+<div class="vh-100">
+  <nav th:replace="mesFragments :: fragNav"></nav>
+  <main class="container">
+    <h1>Gestion des Type Armure</h1>
+
+      <a th:href="@{'/admin/typearmure/create'}" class="btn btn-success">
+        Ajouter un type armure
+      </a>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Bonus Type</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="untypearmure : ${typeArmure}">
+        <td th:text="${untypearmure.nom}"></td>
+        <td th:text="${untypearmure.bonusType}"></td>
+        <td class="d-flex">
+          <a th:href="@{'/admin/typearmure/'+${untypearmure.id}+'/edit'}" class="btn btn-warning">
+            Modifier
+          </a>
+          <a th:href="@{'/admin/typearmure/'+${untypearmure.id}}" class="btn btn-primary">
+            Consulter
+          </a>
+          <div>
+            <form th:action="@{'/admin/typearmure/delete'}" method="post">
+              <input type="hidden" name="id" th:value="${untypearmure.id}">
+              <button class="btn btn-danger">Supprimer</button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
+</div>
+<footer th:replace="mesFragments :: fragFooter"></footer>
+</body>
+</html>

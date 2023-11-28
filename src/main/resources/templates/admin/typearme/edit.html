@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<main class="container">
+    <div class="row col-10 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
+
+        <form novalidate class="validation"  th:action="@{/admin/typearme/update}" th:object="${typearme}" method="post">
+            <h2 class="mb-4">Modification d'un type arme</h2>
+
+            <!-- Input pour l'id du type d'arme -->
+            <input readonly required type="hidden" name="id" th:field="${typearme.id}">
+
+            <!-- Input pour le nom du type d'arme -->
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom du type d'arme</label>
+                <input required minlength="3" maxlength="255" type="text" class="form-control" id="nom" name="nom"  th:field="${typearme.nom}">
+            </div>
+
+            <!-- Input pour la nombreDes du type d'arme -->
+            <div class="mb-3">
+                <label for="nombreDes" class="form-label">Nombre de Des</label>
+                <input required type="number" class="form-control" id="nombreDes" name="nombreDes"  th:field="${typearme.nombreDes}">
+            </div>
+
+            <!-- Input pour la valeur du De maximum du type d'arme -->
+            <div class="mb-3">
+                <label for="valeurDeMax" class="form-label">valeur de Dé Max </label>
+                <input required min="0" max="99" type="number" class="form-control" id="valeurDeMax" name="valeurDeMax" th:field="${typearme.valeurDeMax}">
+            </div>
+
+            <!-- Input pour la valeur du Multiplicateur maximum du type d'arme -->
+            <div class="mb-3">
+                <label for="multiplicateurCritique" class="form-label">Multiplicateur Critique</label>
+                <input required min="0" max="99" type="number" class="form-control" id="multiplicateurCritique" name="multiplicateurCritique" th:field="${typearme.multiplicateurCritique}">
+            </div>
+
+            <!-- Input pour le seuil critique du type d'arme -->
+            <div class="mb-3">
+                <label for="activationCritique" class="form-label">Activation Critique</label>
+                <input required min="0" max="99" type="number" class="form-control" id="activationCritique" name="activationCritique" th:field="${typearme.activationCritique}">
+            </div>
+
+
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary">Modifier</button>
+        </form>
+    </div>
+</main>
+<script src="/js/validation.js"></script>
+</body>
+</html>
