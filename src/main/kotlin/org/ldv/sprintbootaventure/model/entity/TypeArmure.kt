@@ -13,7 +13,7 @@ class TypeArmure (
     @Column(name="id", nullable = false)
     var id:Long? = null,
     var nom : String,
-    var bonusType : String
+    var bonusType : Int
 )
 
 {

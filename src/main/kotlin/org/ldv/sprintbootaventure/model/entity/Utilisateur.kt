@@ -13,10 +13,8 @@ class Utilisateur(
     var email : String,
     var mdp: String,
 
-    @OneToMany(mappedBy = "personnage")
-    var personnage: List<Personnage>? = null,
 
-    @OneToMany(mappedBy = "campagnes")
+    @OneToMany(mappedBy = "auteur")
     var campagnes: List<Campagne>? = null,
 
     @ManyToMany

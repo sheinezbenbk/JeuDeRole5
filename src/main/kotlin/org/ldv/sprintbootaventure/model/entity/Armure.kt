@@ -26,4 +26,14 @@ class Armure constructor(
     @JoinColumn(name = "type_armure_id")
     var typeArmure: TypeArmure? = null
 ) : Item(id, nom, description, cheminImage) {
+
+
+    fun calculProtection(): Int {
+        val protection = this.typeArmure!!.bonusType + this.qualite!!.bonusQualite //variable à potentiel changement
+
+        println(protection)
+        return protection
+    }
+
+
 }

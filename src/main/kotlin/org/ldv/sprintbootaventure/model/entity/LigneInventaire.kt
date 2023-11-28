@@ -23,9 +23,7 @@ class LigneInventaire (
     @JoinColumn(name = "itemId")
     var item: Item? = null,
 
-    var id: Long,
-    var nom: String,
-    var description: String,
-    var quantite: String,
+
+    var quantite: Int,
 
 )

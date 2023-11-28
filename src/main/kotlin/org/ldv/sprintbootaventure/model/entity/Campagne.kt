@@ -14,6 +14,7 @@ class Campagne (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     var id: Long? = null,
+    var nom: String?= null,
     var score: Int,
     var etat: String,
     var dernierScore: Int,
@@ -21,11 +22,11 @@ class Campagne (
 
     @ManyToOne
     @JoinColumn(name ="personnageId")
-    var personnage: Personnage? = null,
+    var hero: Personnage? = null,
 
     @ManyToOne
-    @JoinColumn(name ="utilisateur")
-    var utilisateur: Utilisateur? = null,
+    @JoinColumn(name ="utilisateur id")
+    var auteur: Utilisateur? = null,
     ){
 
 }
