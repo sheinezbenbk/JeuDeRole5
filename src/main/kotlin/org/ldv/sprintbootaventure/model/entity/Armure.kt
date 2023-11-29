@@ -35,5 +35,10 @@ class Armure constructor(
         return protection
     }
 
+    override fun utiliser(cible: Personnage):String {
+        return cible.equipe(this)
+    }
+
+
 
 }

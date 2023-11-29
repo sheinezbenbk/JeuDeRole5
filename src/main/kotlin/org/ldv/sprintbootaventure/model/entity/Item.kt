@@ -34,5 +34,7 @@ import jakarta.persistence.*
     ) {
 // TODO sprint 5: methode utiliser
 
-    }
+    abstract fun utiliser(cible: Personnage):String
+
+}
 

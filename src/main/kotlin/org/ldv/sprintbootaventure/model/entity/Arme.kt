@@ -44,9 +44,14 @@ class Arme (
 
 
         if (resultatCritique > this.typeArme!!.activationCritique) {
-            degats = degats * 2
+            degats *= 2
         }
 
         return degats
     }
+
+    override fun utiliser(cible: Personnage):String {
+        return cible.equipe(this)
+    }
+
 }

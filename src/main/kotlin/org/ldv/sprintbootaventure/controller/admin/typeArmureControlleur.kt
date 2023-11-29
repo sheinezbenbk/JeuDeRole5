@@ -47,7 +47,7 @@ class typeArmureControlleur (val typeArmureDAO: TypeArmureDAO){
     fun create(model: Model): String {
 
         // Crée une nouvelle instance de type d'armure avec des valeurs par défaut
-        val nouveautypearmure = TypeArmure(null, "", "")
+        val nouveautypearmure = TypeArmure(null, "", 0)
 
         // Ajoute le nouveau type d'armure au modèle pour affichage dans le formulaire de création
         model.addAttribute("nouveautypearmure", nouveautypearmure)

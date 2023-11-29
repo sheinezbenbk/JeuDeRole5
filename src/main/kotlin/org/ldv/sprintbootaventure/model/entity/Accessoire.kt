@@ -26,4 +26,9 @@ class Accessoire constructor(
     @JoinColumn(name = "type_accessoire_id")
     var typeAccessoire : TypeAccessoire? = null
 ) : Item(id, nom, description, cheminImage) {
+
+    override fun utiliser(cible: Personnage):String {
+        return cible.equipe(this)
+    }
+
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
+import jakarta.persistence.OneToMany
+
 @Entity
 class Campagne (
 
@@ -27,6 +29,11 @@ class Campagne (
     @ManyToOne
     @JoinColumn(name ="utilisateur id")
     var auteur: Utilisateur? = null,
+
+    @OneToMany(mappedBy = "jeu")
+    var combats: MutableList<Combat> = mutableListOf(),
+
+
     ){
 
 }

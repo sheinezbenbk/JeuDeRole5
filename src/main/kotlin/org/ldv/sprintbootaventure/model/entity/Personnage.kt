@@ -31,10 +31,10 @@ class Personnage(
     @JoinColumn(name = "accessoire_id")
     var accessoire: Accessoire? = null,
 
-    @OneToMany(mappedBy = "monstre", orphanRemoval = true)
+    @OneToMany(mappedBy = "monstre", cascade = arrayOf(CascadeType.REMOVE))
     var combats: MutableList<Combat> = mutableListOf(),
 
-    @OneToMany(mappedBy = "hero", orphanRemoval = true)
+    @OneToMany(mappedBy = "hero", cascade = arrayOf(CascadeType.REMOVE))
     var campagnes: MutableList<Campagne> = mutableListOf(),
 
     @ManyToOne
@@ -108,4 +108,84 @@ class Personnage(
             }
         }
     }
+
+
+
+//arme
+    open fun equipe(arme: Arme) :String{
+
+        var listeItem: List<Item> = this.ligneInventaire.map({ ligne:LigneInventaire-> ligne.item!!})
+     if (arme in listeItem && arme is Arme) {
+            this.arme = arme
+        }
+            return "$nom équipe ${arme.nom}"
+
+    }
+
+    open fun equipe(armure: Armure): String {
+        val ligneArmure = this.ligneInventaire.find { ligne -> ligne.item == armure }
+
+        if (ligneArmure != null && armure is Armure) {
+            this.armure = armure
+
+        }
+        return "$nom équipe ${armure.nom}"
+    }
+
+
+
+
+    open fun equipe(accessoire: Accessoire): String {
+        val avoirAccessoire = this.ligneInventaire.any { ligne -> ligne.item == accessoire }
+
+        if (avoirAccessoire && accessoire is Accessoire) {
+            this.accessoire = accessoire
+
+        }
+        return "$nom équipe ${accessoire.nom}"
+    }
+
+
+    /**
+     * Méthode pour boire une potion de l'inventaire du personnage.
+     *
+     * @param consomer Spécifie si la potion doit être consommée (décrémentant la quantité) ou non.
+     *                 Par défaut, la potion est consommée.
+     * @return Un message décrivant l'action effectuée, tel que boire la potion ou l'absence de potion.
+     */
+    fun boirePotion(consomer: Boolean = true): String {
+        // Message par défaut si le personnage n'a pas de potion dans son inventaire
+        var msg = "$nom n'a pas de potion dans son inventaire."
+
+        // Vérifier si le personnage a une potion dans son inventaire
+        if (this.aUnePotion()) {
+            // Filtrer les lignes d'inventaire pour obtenir celles qui contiennent des potions
+            val lignePotions: List<LigneInventaire> =
+                this.ligneInventaire.filter { ligneInventaire -> ligneInventaire.item is Potion }
+
+            // Utiliser la première potion dans la liste et obtenir le message résultant de l'utilisation
+            msg = lignePotions[0].item!!.utiliser(this)
+
+            // Si consomer est false, augmenter la quantité de potions dans l'inventaire
+            if (!consomer) {
+                lignePotions[0].quantite += 1
+            }
+        }
+
+        // Retourner le message décrivant l'action effectuée
+        return msg
+    }
+    /**
+     * Vérification si le personnage a une potion dans son inventaire.
+     *
+     * @return true si le personnage a une potion, false sinon.
+     */
+    open fun aUnePotion(): Boolean {
+        // Utiliser la méthode any pour vérifier si une ligne d'inventaire contient une Potion
+        return this.ligneInventaire.any { ligneInventaire -> ligneInventaire.item is Potion }
+    }
+
+
+
+
 }
