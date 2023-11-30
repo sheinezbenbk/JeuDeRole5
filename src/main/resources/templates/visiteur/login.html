@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head th:replace="mesFragments :: fragHead"></head>
-
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mesFragments :: fragHead">
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
 <body>
-
-<nav th:replace="mesFragments :: fragNav"></nav>
-<form>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-
-
+<div class="vh-100">
+    <nav th:replace="mesFragments :: fragNav"></nav>
+    <div th:replace="mesFragments:: fragFlashSuccess"></div>
+    <main class="container">
+        <div class="col-8 col-lg-6 mx-auto p-2  mt-3">
+            <form action="/login" method="post">
+                <h1>Login</h1>
+                <!-- Affiche le message d'erreur si l'attribut "error" est présent dans le modèle -->
+                <p th:if="${error}" class="alert alert-danger">Identifiants incorrects. Veuillez réessayer.</p>
+                <div class="mb-3">
+                    <label for="username">Email</label>
+                    <input required class="form-control" id="username" name="username" type="text">
+                </div>
+                <div class="mb-3">
+                    <label for="password">Mdp</label>
+                    <input required class="form-control" id="password" name="password" type="password">
+                </div>
+                <button class="btn btn-primary">Envoyer</button>
+            </form>
+        </div>
+    </main>
+</div>
 <footer th:replace="mesFragments :: fragFooter"></footer>
-
 </body>
 </html>
